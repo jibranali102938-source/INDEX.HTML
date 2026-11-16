@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Nida 💗</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,700&family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#1d0a24;--bg2:#4a1342;--rose:#ff7eb3;--gold:#ffd9a0;--ink:#fff3f8;--glass:rgba(255,255,255,.08);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:Nunito,system-ui,sans-serif;background:radial-gradient(ellipse at 50% 0%,var(--bg2),var(--bg1) 70%) fixed;overflow-x:hidden}
+canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+main{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:0 22px 80px}
+section{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.moon{width:92px;height:92px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,var(--gold));box-shadow:0 0 60px 18px rgba(255,217,160,.35);animation:float 6s ease-in-out infinite;margin-bottom:34px}
+@keyframes float{50%{transform:translateY(-14px)}}
+h1{font-family:Fraunces,Georgia,serif;font-style:italic;font-weight:700;font-size:clamp(3rem,13vw,5.6rem);line-height:1;margin:0 0 18px;background:linear-gradient(100deg,var(--rose),var(--gold),var(--rose));background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
+@keyframes shine{to{background-position:200% center}}
+#type{font-size:1.2rem;line-height:1.7;min-height:5.2em;max-width:30em;color:#ffe3ee}
+.cur{display:inline-block;width:2px;height:1.1em;background:var(--rose);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hint{margin-top:34px;font-size:.95rem;color:var(--gold);opacity:.85;animation:float 2.4s ease-in-out infinite}
+h2{font-family:Fraunces,Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(1.9rem,7vw,2.6rem);margin:0 0 10px}
+.sub{margin:0 0 28px;opacity:.8}
+.cards{display:grid;gap:14px;width:100%}
+.card{background:var(--glass);border:1px solid rgba(255,255,255,.18);border-radius:22px;padding:20px 22px;text-align:left;cursor:pointer;font:inherit;color:inherit;backdrop-filter:blur(8px);transition:transform .3s,background .3s}
+.card:hover{transform:scale(1.02)}
+.card b{display:block;font-family:Fraunces,Georgia,serif;font-style:italic;font-size:1.3rem;font-weight:700}
+.card span{display:block;max-height:0;opacity:0;overflow:hidden;transition:max-height .5s,opacity .5s,margin .5s;line-height:1.6}
+.card.open{background:rgba(255,126,179,.18)}
+.card.open span{max-height:200px;opacity:1;margin-top:8px}
+.ask{font-family:Fraunces,Georgia,serif;font-style:italic;font-size:clamp(2rem,8vw,3rem);margin:0 0 30px;line-height:1.2}
+.btns{position:relative;display:flex;gap:18px;justify-content:center;align-items:center;flex-wrap:wrap;min-height:120px}
+button.b{font:600 1.1rem Nunito,sans-serif;border:0;border-radius:999px;padding:16px 34px;cursor:pointer;color:#fff}
+#yes{background:linear-gradient(135deg,#ff5fa2,#ff9a6c);box-shadow:0 8px 30px rgba(255,95,162,.5);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.08)}}
+#no{background:rgba(255,255,255,.14);transition:left .25s,top .25s}
+#win{display:none}
+#win.show{display:block;animation:pop .8s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{from{transform:scale(.3);opacity:0}}
+.big{font-size:4rem;animation:beat 1s infinite}
+@keyframes beat{30%{transform:scale(1.25)}60%{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<main>
+  <section>
+    <div class="moon"></div>
+    <h1>Nida</h1>
+    <p id="type"></p>
+    <div class="hint">scroll down, there’s more for you ↓</div>
+  </section>
+
+  <section>
+    <h2>Things I promise you</h2>
+    <p class="sub">Tap each one</p>
+    <div class="cards">
+      <button class="card"><b>I will listen</b><span>Really listen, not just wait for my turn to talk. Your feelings matter more than me being right.</span></button>
+      <button class="card"><b>I will be softer</b><span>If I’m upset, I’ll take a breath first. You never deserve to be hurt by my words.</span></button>
+      <button class="card"><b>I will make you smile</b><span>Your smile is my favorite thing in the world. I want to be the reason for it, always.</span></button>
+      <button class="card"><b>I will try, every day</b><span>I’m not perfect, but I will keep trying to be better for you. That’s my promise.</span></button>
+    </div>
+  </section>
+
+  <section>
+    <p class="ask" id="ask">Nida, will you forgive me?</p>
+    <div class="btns" id="btns">
+      <button class="b" id="yes">Yes 💗</button>
+      <button class="b" id="no">No</button>
+    </div>
+    <div id="win">
+      <div class="big">💞</div>
+      <h2>Thank you, Nida</h2>
+      <p class="sub">You just made me the happiest person alive.<br>I love you, and I’ll never stop choosing you.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+(function(){
+  // Floating hearts + stars canvas
+  var cv=document.getElementById('c'),cx=cv.getContext('2d'),W,H,P=[],burst=[];
+  function size(){W=cv.width=innerWidth;H=cv.height=innerHeight}
+  size();addEventListener('resize',size);
+  for(var i=0;i<46;i++)P.push(mk(true));
+  function mk(init){var h=Math.random()<.45;return{x:Math.random()*W,y:init?Math.random()*H:H+20,s:h?8+Math.random()*16:1+Math.random()*2,v:h?.3+Math.random()*.6:.05+Math.random()*.15,h:h,a:.25+Math.random()*.5,p:Math.random()*6}}
+  function heart(x,y,s,col){cx.save();cx.translate(x,y);cx.scale(s/16,s/16);cx.beginPath();cx.moveTo(0,4);cx.bezierCurveTo(-10,-6,-18,6,0,18);cx.bezierCurveTo(18,6,10,-6,0,4);cx.fillStyle=col;cx.fill();cx.restore()}
+  var t=0;
+  function draw(){
+    t+=.02;cx.clearRect(0,0,W,H);
+    P.forEach(function(p,i){
+      p.y-=p.v;p.x+=Math.sin(t+p.p)*.4;
+      if(p.h){heart(p.x,p.y,p.s,'rgba(255,126,179,'+p.a+')')}
+      else{cx.fillStyle='rgba(255,243,248,'+(p.a*(.6+.4*Math.sin(t*3+p.p)))+')';cx.beginPath();cx.arc(p.x,p.y,p.s,0,7);cx.fill()}
+      if(p.y<-30)P[i]=mk(false);
+    });
+    burst.forEach(function(b){b.x+=b.vx;b.y+=b.vy;b.vy+=.08;b.l-=.012;if(b.l>0)heart(b.x,b.y,b.s,'hsla('+b.c+',90%,70%,'+b.l+')')});
+    burst=burst.filter(function(b){return b.l>0});
+    requestAnimationFrame(draw);
+  }
+  draw();
+  function boom(x,y){for(var i=0;i<70;i++){var a=Math.random()*6.28,s=2+Math.random()*6;burst.push({x:x,y:y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-3,s:8+Math.random()*14,c:320+Math.random()*60,l:1})}}
+
+  // Typewriter message
+  var msg="I know I hurt you, and I’m truly sorry. Seeing you sad because of me breaks my heart. You are the best part of my days, and I never want to be the reason your eyes lose their sparkle. This page is just for you.";
+  var el=document.getElementById('type'),i=0;
+  el.innerHTML='<span id="tx"></span><span class="cur"></span>';
+  var tx=document.getElementById('tx');
+  (function step(){if(i<msg.length){tx.textContent+=msg[i++];setTimeout(step,i%40==0?260:38)}})();
+
+  // Promise cards
+  document.querySelectorAll('.card').forEach(function(c){c.addEventListener('click',function(){c.classList.toggle('open')})});
+
+  // Runaway No button
+  var no=document.getElementById('no'),box=document.getElementById('btns'),n=0;
+  var lines=["No","Are you sure?","Please?","Really? 🥺","Think again…","Pretty please 💗"];
+  function run(e){
+    if(e&&e.preventDefault)e.preventDefault();
+    n++;no.textContent=lines[n%lines.length];
+    no.style.position='absolute';
+    var bw=box.clientWidth-no.offsetWidth,bh=box.clientHeight-no.offsetHeight;
+    no.style.left=Math.max(0,Math.random()*bw)+'px';
+    no.style.top=Math.max(0,Math.random()*bh)+'px';
+  }
+  box.style.minHeight='150px';
+  no.addEventListener('mouseenter',run);
+  no.addEventListener('touchstart',run,{passive:false});
+  no.addEventListener('click',run);
+
+  // Yes
+  document.getElementById('yes').addEventListener('click',function(e){
+    box.style.display='none';
+    document.getElementById('ask').style.display='none';
+    document.getElementById('win').classList.add('show');
+    var r=e.target.getBoundingClientRect();
+    boom(innerWidth/2,innerHeight/2);
+    var k=0,id=setInterval(function(){boom(Math.random()*innerWidth,Math.random()*innerHeight*.7);if(++k>6)clearInterval(id)},500);
+  });
+})();
+</script>
+</body>
+</html>
